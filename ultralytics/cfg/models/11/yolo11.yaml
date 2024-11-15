@@ -2,7 +2,7 @@
 # YOLO11 object detection model with P3-P5 outputs. For Usage examples see https://docs.ultralytics.com/tasks/detect
 
 # Parameters
-nc: 80 # number of classes
+nc: 81 # number of classes
 scales: # model compound scaling constants, i.e. 'model=yolo11n.yaml' will call yolo11.yaml with scale 'n'
   # [depth, width, max_channels]
   n: [0.50, 0.25, 1024] # summary: 319 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
@@ -44,4 +44,9 @@ head:
   - [[-1, 10], 1, Concat, [1]] # cat head P5
   - [-1, 2, C3k2, [1024, True]] # 22 (P5/32-large)
 
-  - [[16, 19, 22], 1, Detect, [nc]] # Detect(P3, P4, P5)
+  - [[16, 19, 22], 1, Detect, [80]] # Detect(P3, P4, P5)
+  
+  # Layer 24: Indicate that this head has 1 output - autorickshaws
+  - [[16, 19, 22], 1, Detect, [1]] # Detect(P3, P4, P5) # 24 autorickshaw
+
+  - [[23, 24], 1, ConcatHead, [80, 1]]

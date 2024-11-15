@@ -7,7 +7,6 @@ from .heatmap import Heatmap
 from .object_counter import ObjectCounter
 from .parking_management import ParkingManagement, ParkingPtsSelection
 from .queue_management import QueueManager
-from .region_counter import RegionCounter
 from .speed_estimation import SpeedEstimator
 from .streamlit_inference import inference
 
@@ -22,5 +21,4 @@ __all__ = (
     "SpeedEstimator",
     "Analytics",
     "inference",
-    "RegionCounter",
 )

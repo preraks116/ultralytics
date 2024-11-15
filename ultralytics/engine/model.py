@@ -2,7 +2,7 @@
 
 import inspect
 from pathlib import Path
-from typing import Dict, List, Union
+from typing import List, Union
 
 import numpy as np
 import torch
@@ -881,7 +881,7 @@ class Model(nn.Module):
         return self
 
     @property
-    def names(self) -> Dict[int, str]:
+    def names(self) -> list:
         """
         Retrieves the class names associated with the loaded model.
 
